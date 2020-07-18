@@ -18,7 +18,7 @@ function Game() {
 
   // handleClick adds the new piece and sets the next player
   function handleClick(row: number, col: number) {
-    var squaresCopy = squares.map(function (row) {
+    let squaresCopy = squares.map(function (row) {
       return row.slice();
     });
     squaresCopy[row][col] = darkIsNext ? darkSymbol : lightSymbol;
