@@ -13,12 +13,12 @@ function Game() {
   const [squares, setSquares] = useState(
     Array(numRows)
       .fill(null)
-      .map(() => Array<string>(numCols).fill(""))
+      .map(() => Array<string>(numCols).fill("_"))
   );
 
   // handleClick adds the new piece and sets the next player
   function handleClick(row: number, col: number) {
-    let squaresCopy = squares.map(function (row) {
+    let squaresCopy = squares.map((row) => {
       return row.slice();
     });
     squaresCopy[row][col] = darkIsNext ? darkSymbol : lightSymbol;

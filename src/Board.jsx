@@ -7,6 +7,7 @@ import Square from "./Square";
 function Board(props) {
   let boardSquares = [];
 
+  // Build the board
   for (const [rowIndex, row] of props.squares.entries()) {
     let rowSquares = [];
     for (let colIndex in row) {
@@ -14,12 +15,12 @@ function Board(props) {
         <Square
           piece={props.squares[rowIndex][colIndex]}
           onClick={() => props.onClick(rowIndex, colIndex)}
-          key={colIndex * row}
+          key={row + colIndex + rowIndex}
         />
       );
     }
     boardSquares.push(
-      <Grid container item spacing={0} key={row}>
+      <Grid container item spacing={0} key={row + rowIndex}>
         {rowSquares}
       </Grid>
     );
