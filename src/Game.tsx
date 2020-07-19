@@ -11,9 +11,9 @@ function Game() {
 
   const [darkIsNext, setDarkIsNext] = useState(true);
   const [squares, setSquares] = useState(
-    Array(numRows)
-      .fill(null)
-      .map(() => Array<string>(numCols).fill("_"))
+    Array<Array<string>>(numRows)
+      .fill([])
+      .map(() => Array<string>(numCols).fill(""))
   );
 
   // handleClick adds the new piece and sets the next player
