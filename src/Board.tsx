@@ -1,7 +1,6 @@
 import React from "react";
 import { Grid } from "@material-ui/core";
 
-import { SquareFilled } from "./Game";
 import Square from "./Square";
 
 // legalSquare determines if it is legal to place a game piece at the provided
@@ -13,7 +12,7 @@ function legalSquare(
 ): boolean {
   // No existing piece at spot and is on bottom row or above a placed piece
   if (
-    !SquareFilled(squares[row][col]) &&
+    squares[row][col].length > 0 &&
     (row === squares.length - 1 || squares[row + 1][col].length > 0)
   ) {
     return true;

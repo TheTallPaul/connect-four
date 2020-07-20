@@ -1,10 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Board from "./Board";
 
-export function SquareFilled(square: string): boolean {
-  return square.length > 0;
-}
-
 // winningLine finds if the provided squares match each other and are filled
 function winningLine(
   square1: string,
@@ -13,7 +9,7 @@ function winningLine(
   square4: string
 ): boolean {
   if (
-    SquareFilled(square1) &&
+    square1.length > 0 &&
     square2 === square1 &&
     square3 === square1 &&
     square4 === square1
@@ -113,7 +109,7 @@ function Game() {
 
   useEffect(() => {
     if (checkForWinner(squares)) {
-      !darkIsNext ? setWinner(darkSymbol) : setWinner(lightSymbol);
+      darkIsNext ? setWinner(lightSymbol) : setWinner(darkSymbol);
     }
   }, [squares, darkIsNext]);
 
