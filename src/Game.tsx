@@ -24,6 +24,66 @@ function winningLine(
   return false;
 }
 
+// checkForWinner sees if there's a winning line in the Connect 4 grid
+function checkForWinner(squares: Array<Array<string>>): boolean {
+  for (let row = 0; row < squares.length; row++) {
+    for (let col = 0; col < squares[row].length; col++) {
+      // Horizontal line
+      if (
+        col < squares[row].length - 3 &&
+        winningLine(
+          squares[row][col],
+          squares[row][col + 1],
+          squares[row][col + 2],
+          squares[row][col + 3]
+        )
+      ) {
+        return true;
+      }
+      // Vertical line
+      else if (
+        row < squares.length - 3 &&
+        winningLine(
+          squares[row][col],
+          squares[row + 1][col],
+          squares[row + 2][col],
+          squares[row + 3][col]
+        )
+      ) {
+        return true;
+      }
+
+      // Downward diagonal line
+      else if (
+        row < squares.length - 3 &&
+        col < squares[row].length - 3 &&
+        winningLine(
+          squares[row][col],
+          squares[row + 1][col + 1],
+          squares[row + 2][col + 2],
+          squares[row + 3][col + 3]
+        )
+      ) {
+        return true;
+      }
+      // Upward diagonal line
+      else if (
+        row > squares.length - 4 &&
+        col < squares[row].length - 3 &&
+        winningLine(
+          squares[row][col],
+          squares[row - 1][col + 1],
+          squares[row - 2][col + 2],
+          squares[row - 3][col + 3]
+        )
+      ) {
+        return true;
+      }
+    }
+  }
+  return false;
+}
+
 // Game keeps track of the active player and winners of the Connect Four game
 function Game() {
   const numRows = 6;
@@ -52,66 +112,8 @@ function Game() {
   };
 
   useEffect(() => {
-    // Check if there's a winner and if so, set the winner
-    for (let row = 0; row < squares.length; row++) {
-      for (let col = 0; col < squares[row].length; col++) {
-        let winnerFound = false;
-        // Horizontal line
-        if (
-          col < squares[row].length - 3 &&
-          winningLine(
-            squares[row][col],
-            squares[row][col + 1],
-            squares[row][col + 2],
-            squares[row][col + 3]
-          )
-        ) {
-          winnerFound = true;
-        }
-        // Vertical line
-        else if (
-          row < squares.length - 3 &&
-          winningLine(
-            squares[row][col],
-            squares[row + 1][col],
-            squares[row + 2][col],
-            squares[row + 3][col]
-          )
-        ) {
-          winnerFound = true;
-        }
-
-        // Downward diagonal line
-        else if (
-          row < squares.length - 3 &&
-          col < squares[row].length - 3 &&
-          winningLine(
-            squares[row][col],
-            squares[row + 1][col + 1],
-            squares[row + 2][col + 2],
-            squares[row + 3][col + 3]
-          )
-        ) {
-          winnerFound = true;
-        }
-        // Upward diagonal line
-        else if (
-          row > squares.length - 4 &&
-          col < squares[row].length - 3 &&
-          winningLine(
-            squares[row][col],
-            squares[row - 1][col + 1],
-            squares[row - 2][col + 2],
-            squares[row - 3][col + 3]
-          )
-        ) {
-          winnerFound = true;
-        }
-
-        if (winnerFound) {
-          !darkIsNext ? setWinner(darkSymbol) : setWinner(lightSymbol);
-        }
-      }
+    if (checkForWinner(squares)) {
+      !darkIsNext ? setWinner(darkSymbol) : setWinner(lightSymbol);
     }
   }, [squares, darkIsNext]);
 
