@@ -2,6 +2,7 @@ import React from "react";
 import { Grid } from "@material-ui/core";
 
 import Square from "./Square";
+import { BlankSquareSymbol } from "./Styles";
 
 // legalSquare determines if it is legal to place a game piece at the provided
 // coordinates
@@ -12,7 +13,7 @@ function legalSquare(
 ): boolean {
   // No existing piece at spot and is on bottom row or above a placed piece
   if (
-    squares[row][col].length > 0 &&
+    squares[row][col].length === 0 &&
     (row === squares.length - 1 || squares[row + 1][col].length > 0)
   ) {
     return true;
@@ -28,7 +29,6 @@ type boardProps = {
 
 // Board renders the squares of the Connect Four board
 function Board(props: boardProps) {
-  const blankSquareSymbol = "_";
   let boardSquares = [];
 
   // Build the board
@@ -40,7 +40,7 @@ function Board(props: boardProps) {
           piece={
             props.squares[row][col].length > 0
               ? props.squares[row][col]
-              : blankSquareSymbol
+              : BlankSquareSymbol
           }
           onClick={() => props.onClick(row, col)}
           key={col}
