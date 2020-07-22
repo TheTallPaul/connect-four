@@ -112,11 +112,6 @@ function Game() {
     setDarkIsNext(!darkIsNext);
   };
 
-  // handleDimensionChange changes the size of the game board
-  const handleDimensionSubmit = (data: DimensionsFormInput) => {
-    setDimensions(data);
-  };
-
   useEffect(() => {
     if (checkForWinner(squares)) {
       darkIsNext ? setWinner(LightSymbol) : setWinner(DarkSymbol);
@@ -136,7 +131,7 @@ function Game() {
       {winner}
       <Settings
         dimensions={dimensions}
-        onSubmit={(data: DimensionsFormInput) => handleDimensionSubmit(data)}
+        onSubmit={(data: DimensionsFormInput) => setDimensions(data)}
       />
     </div>
   );
