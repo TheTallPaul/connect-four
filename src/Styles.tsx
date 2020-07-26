@@ -18,7 +18,6 @@ export const UseStyles = makeStyles((theme: Theme) =>
       "&$disabled": {
         borderColor: blueHex,
         color: blueHex,
-        shape: { borderColor: theme.palette.secondary || blue },
       },
     },
     disabled: {},
