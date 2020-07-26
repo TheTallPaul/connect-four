@@ -59,7 +59,9 @@ function Settings(props: settingsProps) {
         />
       </FormControl>
       <FormControl className={classes.formControl}>
-        <Button type="submit">New Game</Button>
+        <Button type="submit" color="primary" variant="contained">
+          New Game
+        </Button>
       </FormControl>
     </form>
   );

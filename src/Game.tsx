@@ -101,7 +101,7 @@ function Game() {
   const [darkIsNext, setDarkIsNext] = useState(true);
   const [winner, setWinner] = useState("");
 
-  // handleClick adds the new piece and sets the next player
+  // handleSquareClick adds the new piece and sets the next player
   const handleSquareClick = (row: number, col: number) => {
     let squaresCopy = squares.map((row) => {
       return row.slice();

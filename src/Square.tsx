@@ -1,19 +1,29 @@
 import React from "react";
 import { Button } from "@material-ui/core";
 
+import { UseStyles } from "./Styles";
+
 type squareProps = {
   piece: string;
   onClick: () => void;
   legal: boolean;
 };
 
+// Square shows displays a game piece or allows a user to place a game piece
 function Square(props: squareProps) {
+  const classes = UseStyles();
+
   return (
     <Button
+      classes={{
+        root: classes.boardButton,
+        disabled: classes.disabled,
+      }}
       onClick={props.onClick}
-      variant="contained"
-      color="primary"
+      variant={props.legal ? "contained" : "outlined"}
+      color="secondary"
       disabled={!props.legal}
+      size="large"
     >
       {props.piece}
     </Button>

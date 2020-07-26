@@ -1,4 +1,12 @@
-import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
+import {
+  createStyles,
+  makeStyles,
+  Theme,
+  createMuiTheme,
+} from "@material-ui/core/styles";
+import { blue } from "@material-ui/core/colors";
+
+const blueHex = "#2979ff";
 
 export const UseStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -6,11 +14,26 @@ export const UseStyles = makeStyles((theme: Theme) =>
       margin: theme.spacing(1),
       minWidth: 120,
     },
-    selectEmpty: {
-      marginTop: theme.spacing(2),
+    boardButton: {
+      "&$disabled": {
+        borderColor: blueHex,
+        color: blueHex,
+        shape: { borderColor: theme.palette.secondary || blue },
+      },
     },
+    disabled: {},
   })
 );
+
+export const AppTheme = createMuiTheme({
+  palette: {
+    primary: blue,
+    secondary: blue,
+  },
+  shape: {
+    borderRadius: 0,
+  },
+});
 
 export const DarkSymbol = "\u2B24"; // ⬤
 export const LightSymbol = "\u25Ef"; // ◯
