@@ -25,6 +25,7 @@ const legalSquare = (
 type boardProps = {
   squares: Array<Array<string>>;
   onClick: (a: number, b: number) => void;
+  winner: string;
 };
 
 // Board renders the squares of the Connect Four board
@@ -44,7 +45,11 @@ const Board = (props: boardProps) => {
           }
           onClick={() => props.onClick(row, col)}
           key={col}
-          legal={legalSquare(props.squares, row, col)}
+          legal={
+            props.winner.length > 0
+              ? false
+              : legalSquare(props.squares, row, col)
+          }
         />
       );
     }

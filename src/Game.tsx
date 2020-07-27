@@ -120,15 +120,27 @@ const Game = () => {
 
   useEffect(() => {
     setSquares(generateSquares(dimensions.numRows, dimensions.numCols));
+    setWinner("");
   }, [dimensions]);
+
+  useEffect(() => {
+    if (winner.length === 0) {
+      setDarkIsNext(true);
+    }
+  }, [winner]);
 
   return (
     <div>
       <Board
         squares={squares}
         onClick={(row: number, col: number) => handleSquareClick(row, col)}
+        winner={winner}
       />
-      {winner}
+      <span>
+        {winner.length > 0
+          ? "Winner is " + winner
+          : "Next piece: ".concat(darkIsNext ? DarkSymbol : LightSymbol)}
+      </span>
       <Settings
         dimensions={dimensions}
         onSubmit={(data: DimensionsFormInput) => setDimensions(data)}
