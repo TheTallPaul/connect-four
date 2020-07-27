@@ -1,19 +1,22 @@
 import React from "react";
-import { ThemeProvider } from "@material-ui/core";
+import { ThemeProvider, Container } from "@material-ui/core";
 
 import Game from "./Game";
 import { AppTheme } from "./Styles";
 
-function App() {
+const App = () => {
   return (
     <div className="App">
       <header className="App-header">
-        <ThemeProvider theme={AppTheme}>
-          <Game />
-        </ThemeProvider>
+        <Container>
+          <ThemeProvider theme={AppTheme}>
+            <h1>Connect Four</h1>
+            <Game />
+          </ThemeProvider>
+        </Container>
       </header>
     </div>
   );
-}
+};
 
 export default App;
