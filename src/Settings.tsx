@@ -17,7 +17,7 @@ type settingsProps = {
 };
 
 // Settings has inputs to change the rules and layout of the game
-function Settings(props: settingsProps) {
+const Settings = (props: settingsProps) => {
   const classes = UseStyles();
   const { control, handleSubmit } = useForm<DimensionsFormInput>();
 
@@ -65,6 +65,6 @@ function Settings(props: settingsProps) {
       </FormControl>
     </form>
   );
-}
+};
 
 export default Settings;

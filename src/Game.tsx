@@ -6,12 +6,12 @@ import { DarkSymbol, LightSymbol } from "./Styles";
 import { DimensionsFormInput } from "./Interfaces";
 
 // winningLine finds if the provided squares match each other and are filled
-function winningLine(
+const winningLine = (
   square1: string,
   square2: string,
   square3: string,
   square4: string
-): boolean {
+): boolean => {
   if (
     square1.length > 0 &&
     square2 === square1 &&
@@ -22,10 +22,10 @@ function winningLine(
   }
 
   return false;
-}
+};
 
 // checkForWinner checks each square if there's a winning line
-function checkForWinner(squares: Array<Array<string>>): boolean {
+const checkForWinner = (squares: Array<Array<string>>): boolean => {
   for (let row = 0; row < squares.length; row++) {
     for (let col = 0; col < squares[row].length; col++) {
       // Horizontal line
@@ -82,17 +82,17 @@ function checkForWinner(squares: Array<Array<string>>): boolean {
     }
   }
   return false;
-}
+};
 
 // generateSquares creates a 2d array of empty strings to serve as the board
-function generateSquares(numRows: number, numCols: number) {
+const generateSquares = (numRows: number, numCols: number) => {
   return Array<Array<string>>(numRows)
     .fill([])
     .map(() => Array<string>(numCols).fill(""));
-}
+};
 
 // Game keeps track of the active player and winners of the Connect Four game
-function Game() {
+const Game = () => {
   const [dimensions, setDimensions] = useState({
     numRows: 6,
     numCols: 7,
@@ -135,6 +135,6 @@ function Game() {
       />
     </div>
   );
-}
+};
 
 export default Game;

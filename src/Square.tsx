@@ -10,7 +10,7 @@ type squareProps = {
 };
 
 // Square shows displays a game piece or allows a user to place a game piece
-function Square(props: squareProps) {
+const Square = (props: squareProps) => {
   const classes = UseStyles();
 
   return (
@@ -28,6 +28,6 @@ function Square(props: squareProps) {
       {props.piece}
     </Button>
   );
-}
+};
 
 export default Square;

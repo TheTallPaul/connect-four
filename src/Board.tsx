@@ -6,11 +6,11 @@ import { BlankSquareSymbol } from "./Styles";
 
 // legalSquare determines if it is legal to place a game piece at the provided
 // coordinates
-function legalSquare(
+const legalSquare = (
   squares: Array<Array<string>>,
   row: number,
   col: number
-): boolean {
+): boolean => {
   // No existing piece at spot and is on bottom row or above a placed piece
   if (
     squares[row][col].length === 0 &&
@@ -20,7 +20,7 @@ function legalSquare(
   }
 
   return false;
-}
+};
 
 type boardProps = {
   squares: Array<Array<string>>;
@@ -28,7 +28,7 @@ type boardProps = {
 };
 
 // Board renders the squares of the Connect Four board
-function Board(props: boardProps) {
+const Board = (props: boardProps) => {
   let boardSquares = [];
 
   // Build the board
@@ -60,6 +60,6 @@ function Board(props: boardProps) {
       {boardSquares}
     </Grid>
   );
-}
+};
 
 export default Board;
