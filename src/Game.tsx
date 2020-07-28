@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 import Board from "./Board";
 import Settings from "./Settings";
-import { DarkSymbol, LightSymbol } from "./Styles";
+import { DarkSymbol, LightSymbol, UseStyles } from "./Styles";
 import { DimensionsFormInput } from "./Interfaces";
 
 // winningLine finds if the provided squares match each other and are filled
@@ -129,6 +129,8 @@ const Game = () => {
     }
   }, [winner]);
 
+  const classes = UseStyles();
+
   return (
     <div>
       <Board
@@ -136,7 +138,7 @@ const Game = () => {
         onClick={(row: number, col: number) => handleSquareClick(row, col)}
         winner={winner}
       />
-      <span>
+      <span className={classes.blueText}>
         {winner.length > 0
           ? "Winner is " + winner
           : "Next piece: ".concat(darkIsNext ? DarkSymbol : LightSymbol)}

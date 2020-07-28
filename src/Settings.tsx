@@ -32,7 +32,7 @@ const Settings = (props: settingsProps) => {
   let dimensionSelectOptions = [];
   for (let option = minDimension; option <= maxDimension; option++) {
     dimensionSelectOptions.push(
-      <MenuItem key={option} value={option}>
+      <MenuItem key={option} value={option} className={classes.blueText}>
         {option}
       </MenuItem>
     );
@@ -41,21 +41,23 @@ const Settings = (props: settingsProps) => {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <FormControl className={classes.formControl}>
-        <InputLabel>Rows</InputLabel>
+        <InputLabel className={classes.blueText}>Rows</InputLabel>
         <Controller
           name="numRows"
           as={<Select>{dimensionSelectOptions}</Select>}
           defaultValue={props.dimensions.numRows}
           control={control}
+          className={classes.blueText}
         />
       </FormControl>
       <FormControl className={classes.formControl}>
-        <InputLabel>Columns</InputLabel>
+        <InputLabel className={classes.blueText}>Columns</InputLabel>
         <Controller
           name="numCols"
           as={<Select>{dimensionSelectOptions}</Select>}
           defaultValue={props.dimensions.numCols}
           control={control}
+          className={classes.blueText}
         />
       </FormControl>
       <FormControl className={classes.formControl}>

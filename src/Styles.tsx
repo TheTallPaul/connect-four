@@ -20,6 +20,9 @@ export const UseStyles = makeStyles((theme: Theme) =>
         color: blueHex,
       },
     },
+    blueText: {
+      color: blueHex,
+    },
     disabled: {},
   })
 );
@@ -36,4 +39,4 @@ export const AppTheme = createMuiTheme({
 
 export const DarkSymbol = "\u2B24"; // ⬤
 export const LightSymbol = "\u25Ef"; // ◯
-export const BlankSquareSymbol = "_";
+export const BlankSquareSymbol = "\u2008"; // Punctuation Space
