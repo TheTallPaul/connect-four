@@ -2,7 +2,7 @@ import React from "react";
 import { ThemeProvider, Container } from "@material-ui/core";
 
 import Game from "../game";
-import { AppTheme, UseStyles } from "../../styles/styles";
+import { AppTheme, UseStyles } from "styles/styles";
 
 const App = () => {
   const classes = UseStyles();

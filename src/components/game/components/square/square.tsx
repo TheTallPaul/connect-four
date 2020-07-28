@@ -1,7 +1,7 @@
 import React from "react";
 import { Button } from "@material-ui/core";
 
-import { UseStyles } from "../../../../styles/styles";
+import { UseStyles } from "styles/styles";
 
 type squareProps = {
   piece: string;

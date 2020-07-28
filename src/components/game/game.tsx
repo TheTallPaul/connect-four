@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 
 import { Board } from "./components";
 import { Settings } from "./components";
-import { DarkSymbol, LightSymbol, UseStyles } from "../../styles/styles";
-import { DimensionsFormInput } from "../../types/types";
+import { DarkSymbol, LightSymbol, UseStyles } from "styles/styles";
+import { DimensionsFormInput } from "types/types";
 
 // winningLine finds if the provided squares match each other and are filled
 const winningLine = (
