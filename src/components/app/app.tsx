@@ -1,8 +1,8 @@
 import React from "react";
 import { ThemeProvider, Container } from "@material-ui/core";
 
-import Game from "./Game";
-import { AppTheme, UseStyles } from "./Styles";
+import Game from "../game";
+import { AppTheme, UseStyles } from "../../styles/styles";
 
 const App = () => {
   const classes = UseStyles();
@@ -10,7 +10,7 @@ const App = () => {
   return (
     <div>
       <header>
-        <Container>
+        <Container maxWidth={false}>
           <ThemeProvider theme={AppTheme}>
             <h1 className={classes.blueText}>Connect Four</h1>
             <Game />

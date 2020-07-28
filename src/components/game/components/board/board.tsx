@@ -1,8 +1,8 @@
 import React from "react";
 import { Grid } from "@material-ui/core";
 
-import Square from "./Square";
-import { BlankSquareSymbol } from "./Styles";
+import Square from "../square";
+import { BlankSquareSymbol } from "../../../../styles/styles";
 
 // legalSquare determines if it is legal to place a game piece at the provided
 // coordinates

@@ -8,8 +8,8 @@ import {
 } from "@material-ui/core";
 import { useForm, Controller } from "react-hook-form";
 
-import { UseStyles } from "./Styles";
-import { DimensionsFormInput } from "./Interfaces";
+import { UseStyles } from "../../../../styles/styles";
+import { DimensionsFormInput } from "../../../../types/types";
 
 type settingsProps = {
   dimensions: DimensionsFormInput;
