@@ -10,7 +10,7 @@ type squareProps = {
 };
 
 // Square shows displays a game piece or allows a user to place a game piece
-const Square = React.memo(function Square(props: squareProps): JSX.Element {
+export default React.memo(function Square(props: squareProps): JSX.Element {
   const classes = UseStyles();
 
   return (
@@ -29,5 +29,3 @@ const Square = React.memo(function Square(props: squareProps): JSX.Element {
     </Button>
   );
 });
-
-export default Square;

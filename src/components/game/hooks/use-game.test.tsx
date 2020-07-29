@@ -2,7 +2,7 @@ import { renderHook } from "@testing-library/react-hooks";
 import { act } from "react-test-renderer";
 
 import { useGame } from ".";
-import { DarkSymbol, LightSymbol } from "styles/styles";
+import { DARK_SYMBOL, LIGHT_SYMBOL } from "styles/styles";
 
 describe("useGame", () => {
   describe("squares", () => {
@@ -32,7 +32,7 @@ describe("useGame", () => {
         ["", "", "", ""],
         ["", "", "", ""],
         ["", "", "", ""],
-        ["", "", "", DarkSymbol],
+        ["", "", "", DARK_SYMBOL],
       ]);
 
       act(() => {
@@ -62,7 +62,7 @@ describe("useGame", () => {
         ["", "", "", ""],
         ["", "", "", ""],
         ["", "", "", ""],
-        ["", "", "", DarkSymbol],
+        ["", "", "", DARK_SYMBOL],
       ]);
 
       act(() => {
@@ -108,12 +108,12 @@ describe("useGame", () => {
       act(() => {
         result.current.setSquares([
           ["", "", "", ""],
-          ["", DarkSymbol, DarkSymbol, ""],
-          [LightSymbol, LightSymbol, LightSymbol, LightSymbol],
-          [LightSymbol, DarkSymbol, DarkSymbol, DarkSymbol],
+          ["", DARK_SYMBOL, DARK_SYMBOL, ""],
+          [LIGHT_SYMBOL, LIGHT_SYMBOL, LIGHT_SYMBOL, LIGHT_SYMBOL],
+          [LIGHT_SYMBOL, DARK_SYMBOL, DARK_SYMBOL, DARK_SYMBOL],
         ]);
       });
-      expect(result.current.winner).toBe(LightSymbol);
+      expect(result.current.winner).toBe(LIGHT_SYMBOL);
 
       act(() => {
         result.current.setWinner("");
@@ -136,8 +136,8 @@ describe("useGame", () => {
         result.current.setSquares([
           ["", "", "", ""],
           ["", "", "", ""],
-          ["", LightSymbol, LightSymbol, LightSymbol],
-          ["", DarkSymbol, DarkSymbol, DarkSymbol],
+          ["", LIGHT_SYMBOL, LIGHT_SYMBOL, LIGHT_SYMBOL],
+          ["", DARK_SYMBOL, DARK_SYMBOL, DARK_SYMBOL],
         ]);
       });
       expect(result.current.winner).toBe("");
@@ -146,8 +146,8 @@ describe("useGame", () => {
         result.current.setSquares([
           ["", "", "", ""],
           ["", "", "", ""],
-          ["", LightSymbol, LightSymbol, LightSymbol],
-          ["", DarkSymbol, DarkSymbol, DarkSymbol],
+          ["", LIGHT_SYMBOL, LIGHT_SYMBOL, LIGHT_SYMBOL],
+          ["", DARK_SYMBOL, DARK_SYMBOL, DARK_SYMBOL],
         ]);
       });
       expect(result.current.winner).toBe("");
@@ -155,7 +155,7 @@ describe("useGame", () => {
       act(() => {
         result.current.handleSquareClick(3, 0);
       });
-      expect(result.current.winner).toBe(DarkSymbol);
+      expect(result.current.winner).toBe(DARK_SYMBOL);
     });
 
     it("should display the light piece as a winner when light is in a winning state", () => {
@@ -165,12 +165,12 @@ describe("useGame", () => {
       act(() => {
         result.current.setSquares([
           ["", "", "", ""],
-          ["", DarkSymbol, DarkSymbol, ""],
-          [LightSymbol, LightSymbol, LightSymbol, LightSymbol],
-          [LightSymbol, DarkSymbol, DarkSymbol, DarkSymbol],
+          ["", DARK_SYMBOL, DARK_SYMBOL, ""],
+          [LIGHT_SYMBOL, LIGHT_SYMBOL, LIGHT_SYMBOL, LIGHT_SYMBOL],
+          [LIGHT_SYMBOL, DARK_SYMBOL, DARK_SYMBOL, DARK_SYMBOL],
         ]);
       });
-      expect(result.current.winner).toBe(LightSymbol);
+      expect(result.current.winner).toBe(LIGHT_SYMBOL);
     });
   });
 
@@ -191,7 +191,7 @@ describe("useGame", () => {
         ["", "", "", ""],
         ["", "", "", ""],
         ["", "", "", ""],
-        ["", "", "", DarkSymbol],
+        ["", "", "", DARK_SYMBOL],
       ]);
     });
     it("should place a dark piece and then a light piece on the provided indices", () => {
@@ -210,7 +210,7 @@ describe("useGame", () => {
         ["", "", "", ""],
         ["", "", "", ""],
         ["", "", "", ""],
-        [DarkSymbol, "", "", ""],
+        [DARK_SYMBOL, "", "", ""],
       ]);
 
       act(() => {
@@ -219,8 +219,8 @@ describe("useGame", () => {
       expect(result.current.squares).toStrictEqual([
         ["", "", "", ""],
         ["", "", "", ""],
-        [LightSymbol, "", "", ""],
-        [DarkSymbol, "", "", ""],
+        [LIGHT_SYMBOL, "", "", ""],
+        [DARK_SYMBOL, "", "", ""],
       ]);
     });
   });

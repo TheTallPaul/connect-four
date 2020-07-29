@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { DarkSymbol, LightSymbol } from "styles/styles";
+import { DARK_SYMBOL, LIGHT_SYMBOL } from "styles/styles";
 
 // useGame holds the hooks for the Game component. It keeps track of the board,
 // the winner, the current player, and the dimensions of the board. Changes to
@@ -13,7 +13,7 @@ export default function useGame(initRow: number, initCol: number) {
   const [darkIsNext, setDarkIsNext] = useState(true);
   const [winner, setWinner] = useState("");
 
-  // Create a new board if the dimesnions have changed
+  // Create a new board if the dimensions have changed
   useEffect(() => {
     setSquares(generateSquares(dimensions.numRows, dimensions.numCols));
     setWinner("");
@@ -22,7 +22,7 @@ export default function useGame(initRow: number, initCol: number) {
   // Set the winner if there is a winning state
   useEffect(() => {
     if (checkForWinner(squares)) {
-      darkIsNext ? setWinner(LightSymbol) : setWinner(DarkSymbol);
+      darkIsNext ? setWinner(LIGHT_SYMBOL) : setWinner(DARK_SYMBOL);
     }
   }, [squares, darkIsNext]);
 
@@ -38,7 +38,7 @@ export default function useGame(initRow: number, initCol: number) {
     let squaresCopy = squares.map((row) => {
       return row.slice();
     });
-    squaresCopy[row][col] = darkIsNext ? DarkSymbol : LightSymbol;
+    squaresCopy[row][col] = darkIsNext ? DARK_SYMBOL : LIGHT_SYMBOL;
 
     setSquares(squaresCopy);
     setDarkIsNext(!darkIsNext);

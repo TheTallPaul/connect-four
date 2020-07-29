@@ -1,8 +1,8 @@
 import React from "react";
 import { Grid } from "@material-ui/core";
 
-import Square from "../square";
-import { BlankSquareSymbol } from "styles/styles";
+import { Square } from "..";
+import { BLANK_SYMBOL } from "styles/styles";
 
 type boardProps = {
   squares: Array<Array<string>>;
@@ -12,11 +12,9 @@ type boardProps = {
 
 // Board renders the squares of the Connect Four board
 export default function Board(props: boardProps): JSX.Element {
-  const boardSquares = buildBoardSquares(props);
-
   return (
     <Grid container item spacing={0}>
-      {boardSquares}
+      {buildBoardSquares(props)}
     </Grid>
   );
 }
@@ -34,7 +32,7 @@ const buildBoardSquares = (props: boardProps): JSX.Element[] => {
           piece={
             props.squares[row][col].length > 0
               ? props.squares[row][col]
-              : BlankSquareSymbol
+              : BLANK_SYMBOL
           }
           onClick={() => props.onClick(row, col)}
           key={col}
