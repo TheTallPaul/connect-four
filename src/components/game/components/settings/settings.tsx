@@ -18,25 +18,22 @@ type settingsProps = {
 
 // Settings has inputs to change the rules and layout of the game
 const Settings = (props: settingsProps) => {
+  const minDimension = 4;
+  const maxDimension = 20;
+
   const classes = UseStyles();
   const { control, handleSubmit } = useForm<DimensionsFormInput>();
 
-  const minDimension = 4;
-  const maxDimension = 20;
+  const dimensionSelectOptions = buildOptions(
+    minDimension,
+    maxDimension,
+    classes.blueText
+  );
 
   // onSubmit passes the dimensions from the HTML event to the Game function
   const onSubmit = (data: DimensionsFormInput) => {
     props.onSubmit(data);
   };
-
-  let dimensionSelectOptions = [];
-  for (let option = minDimension; option <= maxDimension; option++) {
-    dimensionSelectOptions.push(
-      <MenuItem key={option} value={option} className={classes.blueText}>
-        {option}
-      </MenuItem>
-    );
-  }
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -67,6 +64,26 @@ const Settings = (props: settingsProps) => {
       </FormControl>
     </form>
   );
+};
+
+// buildOptions creates a dropdown menu of dimensions options in the provided
+// range
+const buildOptions = (
+  minDimension: number,
+  maxDimension: number,
+  itemStyle: string
+): JSX.Element[] => {
+  let dimensionSelectOptions = [];
+
+  for (let option = minDimension; option <= maxDimension; option++) {
+    dimensionSelectOptions.push(
+      <MenuItem key={option} value={option} className={itemStyle}>
+        {option}
+      </MenuItem>
+    );
+  }
+
+  return dimensionSelectOptions;
 };
 
 export default Settings;
