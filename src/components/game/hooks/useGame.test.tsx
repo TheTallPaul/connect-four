@@ -1,6 +1,8 @@
 import { renderHook } from "@testing-library/react-hooks";
 import { act } from "react-test-renderer";
+
 import useGame from ".";
+import { DarkSymbol, LightSymbol } from "styles/styles";
 
 describe("useGame", () => {
   describe("squares", () => {
@@ -30,7 +32,7 @@ describe("useGame", () => {
         ["", "", "", ""],
         ["", "", "", ""],
         ["", "", "", ""],
-        ["", "", "", "⬤"],
+        ["", "", "", DarkSymbol],
       ]);
 
       act(() => {
@@ -60,7 +62,7 @@ describe("useGame", () => {
         ["", "", "", ""],
         ["", "", "", ""],
         ["", "", "", ""],
-        ["", "", "", "⬤"],
+        ["", "", "", DarkSymbol],
       ]);
 
       act(() => {
@@ -106,12 +108,12 @@ describe("useGame", () => {
       act(() => {
         result.current.setSquares([
           ["", "", "", ""],
-          ["", "⬤", "⬤", ""],
-          ["◯", "◯", "◯", "◯"],
-          ["◯", "⬤", "⬤", "⬤"],
+          ["", DarkSymbol, DarkSymbol, ""],
+          [LightSymbol, LightSymbol, LightSymbol, LightSymbol],
+          [LightSymbol, DarkSymbol, DarkSymbol, DarkSymbol],
         ]);
       });
-      expect(result.current.winner).toBe("◯");
+      expect(result.current.winner).toBe(LightSymbol);
 
       act(() => {
         result.current.setWinner("");
@@ -134,8 +136,8 @@ describe("useGame", () => {
         result.current.setSquares([
           ["", "", "", ""],
           ["", "", "", ""],
-          ["", "◯", "◯", "◯"],
-          ["", "⬤", "⬤", "⬤"],
+          ["", LightSymbol, LightSymbol, LightSymbol],
+          ["", DarkSymbol, DarkSymbol, DarkSymbol],
         ]);
       });
       expect(result.current.winner).toBe("");
@@ -144,8 +146,8 @@ describe("useGame", () => {
         result.current.setSquares([
           ["", "", "", ""],
           ["", "", "", ""],
-          ["", "◯", "◯", "◯"],
-          ["", "⬤", "⬤", "⬤"],
+          ["", LightSymbol, LightSymbol, LightSymbol],
+          ["", DarkSymbol, DarkSymbol, DarkSymbol],
         ]);
       });
       expect(result.current.winner).toBe("");
@@ -153,7 +155,7 @@ describe("useGame", () => {
       act(() => {
         result.current.handleSquareClick(3, 0);
       });
-      expect(result.current.winner).toBe("⬤");
+      expect(result.current.winner).toBe(DarkSymbol);
     });
 
     it("should display the light piece as a winner when light is in a winning state", () => {
@@ -163,12 +165,12 @@ describe("useGame", () => {
       act(() => {
         result.current.setSquares([
           ["", "", "", ""],
-          ["", "⬤", "⬤", ""],
-          ["◯", "◯", "◯", "◯"],
-          ["◯", "⬤", "⬤", "⬤"],
+          ["", DarkSymbol, DarkSymbol, ""],
+          [LightSymbol, LightSymbol, LightSymbol, LightSymbol],
+          [LightSymbol, DarkSymbol, DarkSymbol, DarkSymbol],
         ]);
       });
-      expect(result.current.winner).toBe("◯");
+      expect(result.current.winner).toBe(LightSymbol);
     });
   });
 
@@ -189,7 +191,7 @@ describe("useGame", () => {
         ["", "", "", ""],
         ["", "", "", ""],
         ["", "", "", ""],
-        ["", "", "", "⬤"],
+        ["", "", "", DarkSymbol],
       ]);
     });
     it("should place a dark piece and then a light piece on the provided indices", () => {
@@ -208,7 +210,7 @@ describe("useGame", () => {
         ["", "", "", ""],
         ["", "", "", ""],
         ["", "", "", ""],
-        ["⬤", "", "", ""],
+        [DarkSymbol, "", "", ""],
       ]);
 
       act(() => {
@@ -217,8 +219,8 @@ describe("useGame", () => {
       expect(result.current.squares).toStrictEqual([
         ["", "", "", ""],
         ["", "", "", ""],
-        ["◯", "", "", ""],
-        ["⬤", "", "", ""],
+        [LightSymbol, "", "", ""],
+        [DarkSymbol, "", "", ""],
       ]);
     });
   });
