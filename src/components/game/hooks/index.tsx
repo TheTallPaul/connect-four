@@ -1,1 +1,1 @@
-export { default as useGame } from "./useGame";
+export { default as useGame } from "./use-game";
