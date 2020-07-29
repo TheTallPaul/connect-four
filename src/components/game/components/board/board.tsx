@@ -4,22 +4,21 @@ import { Grid } from "@material-ui/core";
 import Square from "../square";
 import { BlankSquareSymbol } from "styles/styles";
 
-// legalSquare determines if it is legal to place a game piece at the provided
-// coordinates
-const legalSquare = (
-  squares: Array<Array<string>>,
-  row: number,
-  col: number
-): boolean => {
-  // No existing piece at spot and is on bottom row or above a placed piece
-  if (
-    squares[row][col].length === 0 &&
-    (row === squares.length - 1 || squares[row + 1][col].length > 0)
-  ) {
-    return true;
-  }
+type boardProps = {
+  squares: Array<Array<string>>;
+  onClick: (a: number, b: number) => void;
+  winner: string;
+};
 
-  return false;
+// Board renders the squares of the Connect Four board
+const Board = (props: boardProps) => {
+  const boardSquares = buildBoardSquares(props);
+
+  return (
+    <Grid container item spacing={0}>
+      {boardSquares}
+    </Grid>
+  );
 };
 
 // buildBoardSquares constructs a 2d grid of Squares based on the provided
@@ -57,21 +56,22 @@ const buildBoardSquares = (props: boardProps): JSX.Element[] => {
   return boardSquares;
 };
 
-type boardProps = {
-  squares: Array<Array<string>>;
-  onClick: (a: number, b: number) => void;
-  winner: string;
-};
+// legalSquare determines if it is legal to place a game piece at the provided
+// coordinates
+const legalSquare = (
+  squares: Array<Array<string>>,
+  row: number,
+  col: number
+): boolean => {
+  // No existing piece at spot and is on bottom row or above a placed piece
+  if (
+    squares[row][col].length === 0 &&
+    (row === squares.length - 1 || squares[row + 1][col].length > 0)
+  ) {
+    return true;
+  }
 
-// Board renders the squares of the Connect Four board
-const Board = (props: boardProps) => {
-  const boardSquares = buildBoardSquares(props);
-
-  return (
-    <Grid container item spacing={0}>
-      {boardSquares}
-    </Grid>
-  );
+  return false;
 };
 
 export default Board;
