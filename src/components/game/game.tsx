@@ -1,6 +1,6 @@
 import React from "react";
 
-import useGame from "./hooks";
+import { useGame } from "./hooks";
 import { Board } from "./components";
 import { Settings } from "./components";
 import { DarkSymbol, LightSymbol, UseStyles } from "styles/styles";

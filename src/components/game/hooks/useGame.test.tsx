@@ -1,7 +1,7 @@
 import { renderHook } from "@testing-library/react-hooks";
 import { act } from "react-test-renderer";
 
-import useGame from ".";
+import { useGame } from ".";
 import { DarkSymbol, LightSymbol } from "styles/styles";
 
 describe("useGame", () => {
