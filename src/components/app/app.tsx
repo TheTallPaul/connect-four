@@ -4,7 +4,7 @@ import { ThemeProvider, Container } from "@material-ui/core";
 import Game from "../game";
 import { AppTheme, UseStyles } from "styles/styles";
 
-export default function App() {
+export default function App(): JSX.Element {
   const classes = UseStyles();
 
   return (

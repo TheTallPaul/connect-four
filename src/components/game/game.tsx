@@ -4,10 +4,10 @@ import useGame from "./hooks";
 import { Board } from "./components";
 import { Settings } from "./components";
 import { DarkSymbol, LightSymbol, UseStyles } from "styles/styles";
-import { DimensionsFormInput } from "types/types";
+import { dimensionsFormInput } from "types/form-inputs";
 
 // Game keeps track of the active player and winners of the Connect Four game
-export default function Game() {
+export default function Game(): JSX.Element {
   const initRow = 6;
   const initCol = 7;
   const {
@@ -34,7 +34,7 @@ export default function Game() {
       </span>
       <Settings
         dimensions={dimensions}
-        onSubmit={(data: DimensionsFormInput) => setDimensions(data)}
+        onSubmit={(data: dimensionsFormInput) => setDimensions(data)}
       />
     </div>
   );
