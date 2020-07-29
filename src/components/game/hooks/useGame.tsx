@@ -64,7 +64,7 @@ const checkForWinner = (squares: Array<Array<string>>): boolean => {
       }
       // Upward diagonal line
       else if (
-        row > squares.length - 4 &&
+        row >= 3 &&
         col < squares[row].length - 3 &&
         winningLine(
           squares[row][col],
