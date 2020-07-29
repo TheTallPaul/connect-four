@@ -7,7 +7,7 @@ import { DarkSymbol, LightSymbol, UseStyles } from "styles/styles";
 import { DimensionsFormInput } from "types/types";
 
 // Game keeps track of the active player and winners of the Connect Four game
-const Game = () => {
+export default function Game() {
   const initRow = 6;
   const initCol = 7;
   const {
@@ -38,6 +38,4 @@ const Game = () => {
       />
     </div>
   );
-};
-
-export default Game;
+}

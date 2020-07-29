@@ -4,7 +4,7 @@ import { ThemeProvider, Container } from "@material-ui/core";
 import Game from "../game";
 import { AppTheme, UseStyles } from "styles/styles";
 
-const App = () => {
+export default function App() {
   const classes = UseStyles();
 
   return (
@@ -19,6 +19,4 @@ const App = () => {
       </header>
     </div>
   );
-};
-
-export default App;
+}

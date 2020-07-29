@@ -11,7 +11,7 @@ type boardProps = {
 };
 
 // Board renders the squares of the Connect Four board
-const Board = (props: boardProps) => {
+export default function Board(props: boardProps): JSX.Element {
   const boardSquares = buildBoardSquares(props);
 
   return (
@@ -19,7 +19,7 @@ const Board = (props: boardProps) => {
       {boardSquares}
     </Grid>
   );
-};
+}
 
 // buildBoardSquares constructs a 2d grid of Squares based on the provided
 // squares array. Squares that are not legal for play are disabled.
@@ -73,5 +73,3 @@ const legalSquare = (
 
   return false;
 };
-
-export default Board;

@@ -17,7 +17,7 @@ type settingsProps = {
 };
 
 // Settings has inputs to change the rules and layout of the game
-const Settings = (props: settingsProps) => {
+export default function Settings(props: settingsProps): JSX.Element {
   const minDimension = 4;
   const maxDimension = 20;
 
@@ -64,7 +64,7 @@ const Settings = (props: settingsProps) => {
       </FormControl>
     </form>
   );
-};
+}
 
 // buildOptions creates a dropdown menu of dimensions options in the provided
 // range
@@ -85,5 +85,3 @@ const buildOptions = (
 
   return dimensionSelectOptions;
 };
-
-export default Settings;
