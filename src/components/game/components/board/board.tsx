@@ -6,7 +6,7 @@ import { BlankSquareSymbol } from "styles/styles";
 
 type boardProps = {
   squares: Array<Array<string>>;
-  onClick: (a: number, b: number) => void;
+  onClick(a: number, b: number): void;
   winner: string;
 };
 

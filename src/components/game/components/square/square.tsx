@@ -5,7 +5,7 @@ import { UseStyles } from "styles/styles";
 
 type squareProps = {
   piece: string;
-  onClick: () => void;
+  onClick(): void;
   legal: boolean;
 };
 

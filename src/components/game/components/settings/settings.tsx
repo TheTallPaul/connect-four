@@ -13,7 +13,7 @@ import { dimensionsFormInput } from "types/form-inputs";
 
 type settingsProps = {
   dimensions: dimensionsFormInput;
-  onSubmit: (data: dimensionsFormInput) => void;
+  onSubmit(data: dimensionsFormInput): void;
 };
 
 // Settings has inputs to change the rules and layout of the game
