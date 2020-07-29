@@ -22,17 +22,11 @@ const legalSquare = (
   return false;
 };
 
-type boardProps = {
-  squares: Array<Array<string>>;
-  onClick: (a: number, b: number) => void;
-  winner: string;
-};
-
-// Board renders the squares of the Connect Four board
-const Board = (props: boardProps) => {
+// buildBoardSquares constructs a 2d grid of Squares based on the provided
+// squares array. Squares that are not legal for play are disabled.
+const buildBoardSquares = (props: boardProps): JSX.Element[] => {
   let boardSquares = [];
 
-  // Build the board
   for (let row = 0; row < props.squares.length; row++) {
     let rowSquares = [];
     for (let col = 0; col < props.squares[row].length; col++) {
@@ -59,6 +53,19 @@ const Board = (props: boardProps) => {
       </Grid>
     );
   }
+
+  return boardSquares;
+};
+
+type boardProps = {
+  squares: Array<Array<string>>;
+  onClick: (a: number, b: number) => void;
+  winner: string;
+};
+
+// Board renders the squares of the Connect Four board
+const Board = (props: boardProps) => {
+  const boardSquares = buildBoardSquares(props);
 
   return (
     <Grid container item spacing={0}>
