@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { DARK_SYMBOL, LIGHT_SYMBOL } from "styles/styles";
 
 // useGame holds the hooks for the Game component. It keeps track of the board,
@@ -34,15 +34,18 @@ export default function useGame(initRow: number, initCol: number) {
   }, [winner]);
 
   // handleSquareClick adds the new piece and sets the next player
-  const handleSquareClick = (row: number, col: number) => {
-    let squaresCopy = squares.map((row) => {
-      return row.slice();
-    });
-    squaresCopy[row][col] = darkIsNext ? DARK_SYMBOL : LIGHT_SYMBOL;
+  const handleSquareClick = useCallback(
+    (row: number, col: number) => {
+      let squaresCopy = squares.map((row) => {
+        return row.slice();
+      });
+      squaresCopy[row][col] = darkIsNext ? DARK_SYMBOL : LIGHT_SYMBOL;
 
-    setSquares(squaresCopy);
-    setDarkIsNext(!darkIsNext);
-  };
+      setSquares(squaresCopy);
+      setDarkIsNext(!darkIsNext);
+    },
+    [darkIsNext, squares]
+  );
 
   return {
     dimensions,

@@ -10,7 +10,11 @@ type squareProps = {
 };
 
 // Square shows displays a game piece or allows a user to place a game piece
-export default React.memo(function Square(props: squareProps): JSX.Element {
+export default React.memo(function Square({
+  piece,
+  onClick,
+  legal,
+}: squareProps): JSX.Element {
   const classes = UseStyles();
 
   return (
@@ -19,13 +23,13 @@ export default React.memo(function Square(props: squareProps): JSX.Element {
         root: classes.boardButton,
         disabled: classes.disabled,
       }}
-      onClick={props.onClick}
-      variant={props.legal ? "contained" : "outlined"}
+      onClick={onClick}
+      variant={legal ? "contained" : "outlined"}
       color="secondary"
-      disabled={!props.legal}
+      disabled={!legal}
       size="large"
     >
-      {props.piece}
+      {piece}
     </Button>
   );
 });

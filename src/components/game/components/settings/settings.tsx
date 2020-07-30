@@ -20,7 +20,10 @@ type settingsProps = {
 };
 
 // Settings has inputs to change the rules and layout of the game
-export default function Settings(props: settingsProps): JSX.Element {
+export default function Settings({
+  dimensions,
+  onSubmit,
+}: settingsProps): JSX.Element {
   const classes = UseStyles();
   const { control, handleSubmit } = useForm<dimensionsFormInput>();
 
@@ -31,18 +34,18 @@ export default function Settings(props: settingsProps): JSX.Element {
   );
 
   // onSubmit passes the dimensions from the HTML event to the Game function
-  const onSubmit = (data: dimensionsFormInput): void => {
-    props.onSubmit(data);
+  const onFormSubmit = (data: dimensionsFormInput): void => {
+    onSubmit(data);
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(onFormSubmit)}>
       <FormControl className={classes.formControl}>
         <InputLabel className={classes.blueText}>Rows</InputLabel>
         <Controller
           name="numRows"
           as={<Select>{dimensionSelectOptions}</Select>}
-          defaultValue={props.dimensions.numRows}
+          defaultValue={dimensions.numRows}
           control={control}
           className={classes.blueText}
         />
@@ -52,7 +55,7 @@ export default function Settings(props: settingsProps): JSX.Element {
         <Controller
           name="numCols"
           as={<Select>{dimensionSelectOptions}</Select>}
-          defaultValue={props.dimensions.numCols}
+          defaultValue={dimensions.numCols}
           control={control}
           className={classes.blueText}
         />
