@@ -39,4 +39,4 @@ export const AppTheme = createMuiTheme({
 
 export const DARK_SYMBOL = "\u2B24"; // ⬤
 export const LIGHT_SYMBOL = "\u25Ef"; // ◯
-export const BlankSquareSymbol = "\u2008"; // Punctuation Space
+export const BLANK_SYMBOL = "\u2008"; // Punctuation Space

@@ -1,11 +1,11 @@
 import React from "react";
 import { render, unmountComponentAtNode } from "react-dom";
-import App from ".";
+import Board from ".";
 
-describe("App", () => {
+describe("Board", () => {
   it("renders without crashing", () => {
     const div = document.createElement("div");
-    render(<App />, div);
+    render(<Board squares={[[""]]} onClick={() => {}} winner={""} />, div);
     unmountComponentAtNode(div);
   });
 });
