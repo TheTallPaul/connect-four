@@ -1,9 +1,7 @@
 import React from "react";
-import { Container } from "@material-ui/core";
 
 import { useGame } from "./hooks";
-import { Board } from "./components";
-import { Settings } from "./components";
+import { Board, Settings } from "./components";
 import { DARK_SYMBOL, LIGHT_SYMBOL, UseStyles } from "styles/styles";
 import { dimensionsFormInput } from "types/form-inputs";
 
@@ -23,7 +21,7 @@ export default function Game(): JSX.Element {
   const classes = UseStyles();
 
   return (
-    <Container maxWidth={false}>
+    <div id="game">
       <Board
         squares={squares}
         onClick={(row: number, col: number) => handleSquareClick(row, col)}
@@ -38,6 +36,6 @@ export default function Game(): JSX.Element {
         dimensions={dimensions}
         onSubmit={(data: dimensionsFormInput) => setDimensions(data)}
       />
-    </Container>
+    </div>
   );
 }
