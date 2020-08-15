@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
-import { GAME_SYMBOLS } from "constants/";
+import GAME_SYMBOLS from "constants/game-symbols";
 import Dimensions from "types/dimensions";
 
 // useGame holds the hooks for the Game component. It keeps track of the board,

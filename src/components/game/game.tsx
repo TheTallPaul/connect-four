@@ -2,7 +2,7 @@ import React from "react";
 
 import { useGame } from "./hooks";
 import { Board, Settings } from "./components";
-import { GAME_SYMBOLS } from "constants/";
+import GAME_SYMBOLS from "constants/game-symbols";
 import Dimensions from "types/dimensions";
 
 const INIT_ROW: number = 6;

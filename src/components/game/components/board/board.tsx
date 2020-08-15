@@ -2,7 +2,7 @@ import React from "react";
 import { Grid } from "@material-ui/core";
 
 import { Square } from "..";
-import { GAME_SYMBOLS } from "constants/";
+import GAME_SYMBOLS from "constants/game-symbols";
 
 type boardProps = {
   squares: Array<Array<string>>;
