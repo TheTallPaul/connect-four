@@ -17,44 +17,36 @@ export default function Board({
   winner,
 }: boardProps): JSX.Element {
   return (
-    <Grid container item spacing={0}>
-      {buildBoardSquares(squares, onClick, winner)}
+    <Grid container item spacing={0} role="grid">
+      {squares.map((row, rowIndex) => {
+        let squareRow = row.map((square, colIndex) => {
+          return (
+            <Square
+              piece={
+                squares[rowIndex][colIndex].length > 0
+                  ? squares[rowIndex][colIndex]
+                  : BLANK_SYMBOL
+              }
+              onClick={() => onClick(rowIndex, colIndex)}
+              key={colIndex}
+              legal={
+                winner.length > 0
+                  ? false
+                  : legalSquare(squares, rowIndex, colIndex)
+              }
+              id={rowIndex.toString() + "-" + colIndex.toString()}
+            />
+          );
+        });
+        return (
+          <Grid container item spacing={0} key={rowIndex} role="row">
+            {squareRow}
+          </Grid>
+        );
+      })}
     </Grid>
   );
 }
-
-// buildBoardSquares constructs a 2d grid of Squares based on the provided
-// squares array. Squares that are not legal for play are disabled.
-const buildBoardSquares = (
-  squares: Array<Array<string>>,
-  onClick: (a: number, b: number) => void,
-  winner: string
-): JSX.Element[] => {
-  let boardSquares = [];
-
-  for (let row = 0; row < squares.length; row++) {
-    let rowSquares = [];
-    for (let col = 0; col < squares[row].length; col++) {
-      rowSquares.push(
-        <Square
-          piece={
-            squares[row][col].length > 0 ? squares[row][col] : BLANK_SYMBOL
-          }
-          onClick={() => onClick(row, col)}
-          key={col}
-          legal={winner.length > 0 ? false : legalSquare(squares, row, col)}
-        />
-      );
-    }
-    boardSquares.push(
-      <Grid container item spacing={0} key={row}>
-        {rowSquares}
-      </Grid>
-    );
-  }
-
-  return boardSquares;
-};
 
 // legalSquare determines if it is legal to place a game piece at the provided
 // coordinates

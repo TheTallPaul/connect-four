@@ -18,18 +18,18 @@ export default function Game(): JSX.Element {
     winner,
     handleSquareClick,
   } = useGame(INIT_ROW, INIT_COL);
-  const classes = UseStyles();
-
+  //const classes = UseStyles();
+  //className={classes.blueText}
   return (
-    <div id="game">
+    <div>
       <Board
         squares={squares}
         onClick={(row: number, col: number) => handleSquareClick(row, col)}
         winner={winner}
       />
-      <span className={classes.blueText}>
+      <span role="alert">
         {winner.length > 0
-          ? "Winner is " + winner
+          ? "Winner is ".concat(winner)
           : "Next piece: ".concat(darkIsNext ? DARK_SYMBOL : LIGHT_SYMBOL)}
       </span>
       <Settings

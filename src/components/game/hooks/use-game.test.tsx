@@ -1,5 +1,4 @@
-import { renderHook } from "@testing-library/react-hooks";
-import { act } from "react-test-renderer";
+import { renderHook, act } from "@testing-library/react-hooks";
 
 import { useGame } from ".";
 import { DARK_SYMBOL, LIGHT_SYMBOL } from "styles/styles";

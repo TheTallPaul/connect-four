@@ -5,7 +5,7 @@ import Square from ".";
 describe("Square", () => {
   it("renders without crashing", () => {
     const div = document.createElement("div");
-    render(<Square piece={""} onClick={() => {}} legal={true} />, div);
+    render(<Square piece={""} onClick={() => {}} legal={true} id="" />, div);
     unmountComponentAtNode(div);
   });
 });

@@ -7,6 +7,7 @@ type squareProps = {
   piece: string;
   onClick(): void;
   legal: boolean;
+  id: string;
 };
 
 // Square shows displays a game piece or allows a user to place a game piece
@@ -14,6 +15,7 @@ export default React.memo(function Square({
   piece,
   onClick,
   legal,
+  id,
 }: squareProps): JSX.Element {
   const classes = UseStyles();
 
@@ -28,6 +30,8 @@ export default React.memo(function Square({
       color="secondary"
       disabled={!legal}
       size="large"
+      role="cell"
+      data-testid={legal ? "legal-square-" + id : "illegal-square-" + id}
     >
       {piece}
     </Button>

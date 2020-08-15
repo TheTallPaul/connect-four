@@ -44,7 +44,7 @@ export default function Settings({
         <InputLabel className={classes.blueText}>Rows</InputLabel>
         <Controller
           name="numRows"
-          as={<Select>{dimensionSelectOptions}</Select>}
+          as={<Select role="list">{dimensionSelectOptions}</Select>}
           defaultValue={dimensions.numRows}
           control={control}
           className={classes.blueText}
@@ -54,7 +54,7 @@ export default function Settings({
         <InputLabel className={classes.blueText}>Columns</InputLabel>
         <Controller
           name="numCols"
-          as={<Select>{dimensionSelectOptions}</Select>}
+          as={<Select role="list">{dimensionSelectOptions}</Select>}
           defaultValue={dimensions.numCols}
           control={control}
           className={classes.blueText}
@@ -80,7 +80,12 @@ const buildOptions = (
 
   for (let option = minDimension; option <= maxDimension; option++) {
     dimensionSelectOptions.push(
-      <MenuItem key={option} value={option} className={itemStyle}>
+      <MenuItem
+        key={option}
+        value={option}
+        className={itemStyle}
+        role="listitem"
+      >
         {option}
       </MenuItem>
     );
