@@ -27,7 +27,7 @@ export const UseStyles = makeStyles((theme: Theme) =>
   })
 );
 
-export const AppTheme = createMuiTheme({
+export const AppTheme: Theme = createMuiTheme({
   palette: {
     primary: blue,
     secondary: blue,
@@ -36,7 +36,3 @@ export const AppTheme = createMuiTheme({
     borderRadius: 0,
   },
 });
-
-export const DARK_SYMBOL = "\u2B24"; // ⬤
-export const LIGHT_SYMBOL = "\u25Ef"; // ◯
-export const BLANK_SYMBOL = "\u2008"; // Punctuation Space

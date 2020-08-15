@@ -2,7 +2,7 @@ import React from "react";
 import { Grid } from "@material-ui/core";
 
 import { Square } from "..";
-import { BLANK_SYMBOL } from "styles/styles";
+import { GAME_SYMBOLS } from "constants/";
 
 type boardProps = {
   squares: Array<Array<string>>;
@@ -25,7 +25,7 @@ export default function Board({
               piece={
                 squares[rowIndex][colIndex].length > 0
                   ? squares[rowIndex][colIndex]
-                  : BLANK_SYMBOL
+                  : GAME_SYMBOLS.blank
               }
               onClick={() => onClick(rowIndex, colIndex)}
               key={colIndex}

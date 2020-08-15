@@ -1,7 +1,7 @@
 import { renderHook, act } from "@testing-library/react-hooks";
 
 import { useGame } from ".";
-import { DARK_SYMBOL, LIGHT_SYMBOL } from "styles/styles";
+import { GAME_SYMBOLS } from "constants/";
 
 describe("useGame", () => {
   describe("squares", () => {
@@ -31,7 +31,7 @@ describe("useGame", () => {
         ["", "", "", ""],
         ["", "", "", ""],
         ["", "", "", ""],
-        ["", "", "", DARK_SYMBOL],
+        ["", "", "", GAME_SYMBOLS.dark],
       ]);
 
       act(() => {
@@ -61,7 +61,7 @@ describe("useGame", () => {
         ["", "", "", ""],
         ["", "", "", ""],
         ["", "", "", ""],
-        ["", "", "", DARK_SYMBOL],
+        ["", "", "", GAME_SYMBOLS.dark],
       ]);
 
       act(() => {
@@ -190,7 +190,7 @@ describe("useGame", () => {
         ["", "", "", ""],
         ["", "", "", ""],
         ["", "", "", ""],
-        ["", "", "", DARK_SYMBOL],
+        ["", "", "", GAME_SYMBOLS.dark],
       ]);
     });
     it("should place a dark piece and then a light piece on the provided indices", () => {
@@ -209,7 +209,7 @@ describe("useGame", () => {
         ["", "", "", ""],
         ["", "", "", ""],
         ["", "", "", ""],
-        [DARK_SYMBOL, "", "", ""],
+        [GAME_SYMBOLS.dark, "", "", ""],
       ]);
 
       act(() => {
@@ -218,8 +218,8 @@ describe("useGame", () => {
       expect(result.current.squares).toStrictEqual([
         ["", "", "", ""],
         ["", "", "", ""],
-        [LIGHT_SYMBOL, "", "", ""],
-        [DARK_SYMBOL, "", "", ""],
+        [GAME_SYMBOLS.light, "", "", ""],
+        [GAME_SYMBOLS.dark, "", "", ""],
       ]);
     });
   });

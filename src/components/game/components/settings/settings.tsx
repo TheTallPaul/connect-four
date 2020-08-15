@@ -11,8 +11,8 @@ import { useForm, Controller } from "react-hook-form";
 import { UseStyles } from "styles/styles";
 import Dimensions from "types/dimensions";
 
-const MIN_DIMENSION = 4;
-const MAX_DIMENSION = 20;
+const MIN_DIMENSION: number = 4;
+const MAX_DIMENSION: number = 20;
 
 type settingsProps = {
   dimensions: Dimensions;

@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
-import { DARK_SYMBOL, LIGHT_SYMBOL } from "styles/styles";
+import { GAME_SYMBOLS } from "constants/";
 import Dimensions from "types/dimensions";
 
 // useGame holds the hooks for the Game component. It keeps track of the board,
@@ -33,7 +33,7 @@ export default function useGame(
   // Set the winner if there is a winning state
   useEffect(() => {
     if (checkForWinner(squares)) {
-      darkIsNext ? setWinner(LIGHT_SYMBOL) : setWinner(DARK_SYMBOL);
+      darkIsNext ? setWinner(GAME_SYMBOLS.light) : setWinner(GAME_SYMBOLS.dark);
     }
   }, [squares, darkIsNext]);
 
@@ -50,7 +50,9 @@ export default function useGame(
       let squaresCopy = squares.map((row) => {
         return row.slice();
       });
-      squaresCopy[row][col] = darkIsNext ? DARK_SYMBOL : LIGHT_SYMBOL;
+      squaresCopy[row][col] = darkIsNext
+        ? GAME_SYMBOLS.dark
+        : GAME_SYMBOLS.light;
 
       setSquares(squaresCopy);
       setDarkIsNext(!darkIsNext);
