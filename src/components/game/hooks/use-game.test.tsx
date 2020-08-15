@@ -102,75 +102,121 @@ describe("useGame", () => {
       expect(result.current.darkIsNext).toBe(false);
     });
 
-    //   it("should be set to true when the winner is reset", () => {
-    //     const { result } = renderHook(() => useGame(4, 4));
-    //     act(() => {
-    //       result.current.setSquares([
-    //         ["", "", "", ""],
-    //         ["", DARK_SYMBOL, DARK_SYMBOL, ""],
-    //         [LIGHT_SYMBOL, LIGHT_SYMBOL, LIGHT_SYMBOL, LIGHT_SYMBOL],
-    //         [LIGHT_SYMBOL, DARK_SYMBOL, DARK_SYMBOL, DARK_SYMBOL],
-    //       ]);
-    //     });
-    //     expect(result.current.winner).toBe(LIGHT_SYMBOL);
+    it("should be set to true when the game is reset", () => {
+      const { result } = renderHook(() => useGame(4, 4));
 
-    //     act(() => {
-    //       result.current.setWinner("");
-    //     });
-    //     expect(result.current.darkIsNext).toStrictEqual(true);
-    //   });
-    // });
+      act(() => {
+        result.current.handleSquareClick(3, 0);
+      });
+      expect(result.current.darkIsNext).toStrictEqual(false);
 
-    // describe("winner", () => {
-    //   it("should default to an empty string", () => {
-    //     const { result } = renderHook(() => useGame(4, 4));
-    //     expect(result.current.winner).toBe("");
-    //   });
+      act(() => {
+        result.current.setDimensions({ numRows: 5, numCols: 5 });
+      });
+      expect(result.current.darkIsNext).toStrictEqual(true);
+    });
+  });
 
-    //   it("should display the dark piece as a winner when dark is in a winning state", () => {
-    //     const { result } = renderHook(() => useGame(4, 4));
-    //     expect(result.current.winner).toBe("");
+  describe("winner", () => {
+    it("should default to an empty string", () => {
+      const { result } = renderHook(() => useGame(4, 4));
+      expect(result.current.winner).toBe("");
+    });
 
-    //     act(() => {
-    //       result.current.setSquares([
-    //         ["", "", "", ""],
-    //         ["", "", "", ""],
-    //         ["", LIGHT_SYMBOL, LIGHT_SYMBOL, LIGHT_SYMBOL],
-    //         ["", DARK_SYMBOL, DARK_SYMBOL, DARK_SYMBOL],
-    //       ]);
-    //     });
-    //     expect(result.current.winner).toBe("");
+    it("should display the dark piece as a winner when dark is in a winning state", () => {
+      const { result } = renderHook(() => useGame(4, 4));
+      expect(result.current.winner).toBe("");
 
-    //     act(() => {
-    //       result.current.setSquares([
-    //         ["", "", "", ""],
-    //         ["", "", "", ""],
-    //         ["", LIGHT_SYMBOL, LIGHT_SYMBOL, LIGHT_SYMBOL],
-    //         ["", DARK_SYMBOL, DARK_SYMBOL, DARK_SYMBOL],
-    //       ]);
-    //     });
-    //     expect(result.current.winner).toBe("");
+      act(() => {
+        result.current.handleSquareClick(3, 0); // ⬤
+      });
+      expect(result.current.winner).toBe("");
 
-    //     act(() => {
-    //       result.current.handleSquareClick(3, 0);
-    //     });
-    //     expect(result.current.winner).toBe(DARK_SYMBOL);
-    //   });
+      act(() => {
+        result.current.handleSquareClick(2, 0); // ◯
+      });
+      expect(result.current.winner).toBe("");
 
-    //   it("should display the light piece as a winner when light is in a winning state", () => {
-    //     const { result } = renderHook(() => useGame(4, 4));
-    //     expect(result.current.winner).toBe("");
+      act(() => {
+        result.current.handleSquareClick(3, 1); // ⬤
+      });
+      expect(result.current.winner).toBe("");
 
-    //     act(() => {
-    //       result.current.setSquares([
-    //         ["", "", "", ""],
-    //         ["", DARK_SYMBOL, DARK_SYMBOL, ""],
-    //         [LIGHT_SYMBOL, LIGHT_SYMBOL, LIGHT_SYMBOL, LIGHT_SYMBOL],
-    //         [LIGHT_SYMBOL, DARK_SYMBOL, DARK_SYMBOL, DARK_SYMBOL],
-    //       ]);
-    //     });
-    //     expect(result.current.winner).toBe(LIGHT_SYMBOL);
-    //   });
+      act(() => {
+        result.current.handleSquareClick(2, 1); // ◯
+      });
+      expect(result.current.winner).toBe("");
+
+      act(() => {
+        result.current.handleSquareClick(3, 2); // ⬤
+      });
+      expect(result.current.winner).toBe("");
+
+      act(() => {
+        result.current.handleSquareClick(2, 2); // ◯
+      });
+      expect(result.current.winner).toBe("");
+
+      act(() => {
+        result.current.handleSquareClick(3, 3); // ⬤
+      });
+      expect(result.current.winner).toBe(GAME_SYMBOLS.dark);
+    });
+
+    it("should display the light piece as a winner when light is in a winning state", () => {
+      const { result } = renderHook(() => useGame(4, 4));
+      expect(result.current.winner).toBe("");
+
+      act(() => {
+        result.current.handleSquareClick(3, 0); // ⬤
+      });
+      expect(result.current.winner).toBe("");
+
+      act(() => {
+        result.current.handleSquareClick(2, 0); // ◯
+      });
+      expect(result.current.winner).toBe("");
+
+      act(() => {
+        result.current.handleSquareClick(3, 1); // ⬤
+      });
+      expect(result.current.winner).toBe("");
+
+      act(() => {
+        result.current.handleSquareClick(2, 1); // ◯
+      });
+      expect(result.current.winner).toBe("");
+
+      act(() => {
+        result.current.handleSquareClick(3, 2); // ⬤
+      });
+      expect(result.current.winner).toBe("");
+
+      act(() => {
+        result.current.handleSquareClick(2, 2); // ◯
+      });
+      expect(result.current.winner).toBe("");
+
+      act(() => {
+        result.current.handleSquareClick(1, 0); // ⬤
+      });
+      expect(result.current.winner).toBe("");
+
+      act(() => {
+        result.current.handleSquareClick(3, 3); // ◯
+      });
+      expect(result.current.winner).toBe("");
+
+      act(() => {
+        result.current.handleSquareClick(0, 0); // ⬤
+      });
+      expect(result.current.winner).toBe("");
+
+      act(() => {
+        result.current.handleSquareClick(2, 3); // ◯
+      });
+      expect(result.current.winner).toBe(GAME_SYMBOLS.light);
+    });
   });
 
   describe("handleSquareClick", () => {

@@ -24,10 +24,12 @@ export default function useGame(
   const [darkIsNext, setDarkIsNext] = useState(true);
   const [winner, setWinner] = useState("");
 
-  // Create a new board if the dimensions have changed
+  // Create a new board if the dimensions have changed and reset the winner and
+  // active player
   useEffect(() => {
     setSquares(generateSquares(dimensions.numRows, dimensions.numCols));
     setWinner("");
+    setDarkIsNext(true);
   }, [dimensions]);
 
   // Set the winner if there is a winning state
@@ -36,13 +38,6 @@ export default function useGame(
       darkIsNext ? setWinner(GAME_SYMBOLS.light) : setWinner(GAME_SYMBOLS.dark);
     }
   }, [squares, darkIsNext]);
-
-  // When the winner is reset, make the dark player the starter
-  useEffect(() => {
-    if (winner.length === 0) {
-      setDarkIsNext(true);
-    }
-  }, [winner]);
 
   // handleSquareClick adds the new piece and sets the next player
   const handleSquareClick = useCallback(

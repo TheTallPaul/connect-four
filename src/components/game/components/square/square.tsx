@@ -31,7 +31,7 @@ export default React.memo(function Square({
       disabled={!legal}
       size="large"
       role="cell"
-      data-testid={legal ? "legal-square-" + id : "illegal-square-" + id}
+      data-testid={"square-" + id}
     >
       {piece}
     </Button>

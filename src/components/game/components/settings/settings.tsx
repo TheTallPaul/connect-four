@@ -44,7 +44,11 @@ export default function Settings({
         <InputLabel className={classes.blueText}>Rows</InputLabel>
         <Controller
           name="numRows"
-          as={<Select role="list">{dimensionSelectOptions}</Select>}
+          as={
+            <Select role="list" data-testid="numRowSelect">
+              {dimensionSelectOptions}
+            </Select>
+          }
           defaultValue={dimensions.numRows}
           control={control}
           className={classes.blueText}
@@ -54,14 +58,23 @@ export default function Settings({
         <InputLabel className={classes.blueText}>Columns</InputLabel>
         <Controller
           name="numCols"
-          as={<Select role="list">{dimensionSelectOptions}</Select>}
+          as={
+            <Select role="list" data-testid="numColSelect">
+              {dimensionSelectOptions}
+            </Select>
+          }
           defaultValue={dimensions.numCols}
           control={control}
           className={classes.blueText}
         />
       </FormControl>
       <FormControl className={classes.formControl}>
-        <Button type="submit" color="primary" variant="contained">
+        <Button
+          type="submit"
+          color="primary"
+          variant="contained"
+          data-testid="newGameButton"
+        >
           New Game
         </Button>
       </FormControl>
