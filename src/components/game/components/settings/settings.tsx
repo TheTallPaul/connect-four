@@ -9,14 +9,14 @@ import {
 import { useForm, Controller } from "react-hook-form";
 
 import { UseStyles } from "styles/styles";
-import { dimensionsFormInput } from "types/form-inputs";
+import Dimensions from "types/dimensions";
 
 const MIN_DIMENSION = 4;
 const MAX_DIMENSION = 20;
 
 type settingsProps = {
-  dimensions: dimensionsFormInput;
-  onSubmit(data: dimensionsFormInput): void;
+  dimensions: Dimensions;
+  onSubmit(data: Dimensions): void;
 };
 
 // Settings has inputs to change the rules and layout of the game
@@ -25,7 +25,7 @@ export default function Settings({
   onSubmit,
 }: settingsProps): JSX.Element {
   const classes = UseStyles();
-  const { control, handleSubmit } = useForm<dimensionsFormInput>();
+  const { control, handleSubmit } = useForm<Dimensions>();
 
   const dimensionSelectOptions = buildOptions(
     MIN_DIMENSION,
@@ -34,7 +34,7 @@ export default function Settings({
   );
 
   // onSubmit passes the dimensions from the HTML event to the Game function
-  const onFormSubmit = (data: dimensionsFormInput): void => {
+  const onFormSubmit = (data: Dimensions): void => {
     onSubmit(data);
   };
 

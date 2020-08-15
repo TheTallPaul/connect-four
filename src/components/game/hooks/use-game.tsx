@@ -1,10 +1,21 @@
 import { useState, useEffect, useCallback } from "react";
 import { DARK_SYMBOL, LIGHT_SYMBOL } from "styles/styles";
+import Dimensions from "types/dimensions";
 
 // useGame holds the hooks for the Game component. It keeps track of the board,
 // the winner, the current player, and the dimensions of the board. Changes to
 // those values will propogate changes in the hooks.
-export default function useGame(initRow: number, initCol: number) {
+export default function useGame(
+  initRow: number,
+  initCol: number
+): {
+  dimensions: Dimensions;
+  setDimensions: React.Dispatch<React.SetStateAction<Dimensions>>;
+  squares: string[][];
+  darkIsNext: boolean;
+  winner: string;
+  handleSquareClick: (row: number, col: number) => void;
+} {
   const [dimensions, setDimensions] = useState({
     numRows: initRow,
     numCols: initCol,
@@ -35,7 +46,7 @@ export default function useGame(initRow: number, initCol: number) {
 
   // handleSquareClick adds the new piece and sets the next player
   const handleSquareClick = useCallback(
-    (row: number, col: number) => {
+    (row: number, col: number): void => {
       let squaresCopy = squares.map((row) => {
         return row.slice();
       });
@@ -51,11 +62,8 @@ export default function useGame(initRow: number, initCol: number) {
     dimensions,
     setDimensions,
     squares,
-    setSquares,
     darkIsNext,
-    setDarkIsNext,
     winner,
-    setWinner,
     handleSquareClick,
   };
 }

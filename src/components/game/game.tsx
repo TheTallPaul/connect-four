@@ -2,8 +2,8 @@ import React from "react";
 
 import { useGame } from "./hooks";
 import { Board, Settings } from "./components";
-import { DARK_SYMBOL, LIGHT_SYMBOL, UseStyles } from "styles/styles";
-import { dimensionsFormInput } from "types/form-inputs";
+import { DARK_SYMBOL, LIGHT_SYMBOL } from "styles/styles";
+import Dimensions from "types/dimensions";
 
 const INIT_ROW = 6;
 const INIT_COL = 7;
@@ -18,8 +18,7 @@ export default function Game(): JSX.Element {
     winner,
     handleSquareClick,
   } = useGame(INIT_ROW, INIT_COL);
-  //const classes = UseStyles();
-  //className={classes.blueText}
+
   return (
     <div>
       <Board
@@ -34,7 +33,7 @@ export default function Game(): JSX.Element {
       </span>
       <Settings
         dimensions={dimensions}
-        onSubmit={(data: dimensionsFormInput) => setDimensions(data)}
+        onSubmit={(data: Dimensions) => setDimensions(data)}
       />
     </div>
   );

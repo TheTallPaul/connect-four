@@ -1,14 +1,14 @@
 import React from "react";
-import { render, unmountComponentAtNode } from "react-dom";
+import { render } from "@testing-library/react";
+
 import Settings from ".";
 
 describe("Settings", () => {
-  it("renders without crashing", () => {
-    const div = document.createElement("div");
+  beforeEach(() => {
     render(
-      <Settings dimensions={{ numRows: 6, numCols: 7 }} onSubmit={() => {}} />,
-      div
+      <Settings dimensions={{ numRows: 6, numCols: 7 }} onSubmit={() => {}} />
     );
-    unmountComponentAtNode(div);
   });
+
+  it("should render without crashing", () => {});
 });
