@@ -1,3 +1,7 @@
+# Connect Four
+
+A React App I built to practice with hooks and Material UI.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
